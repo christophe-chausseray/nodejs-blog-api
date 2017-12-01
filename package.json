@@ -1,0 +1,36 @@
+{
+  "name": "nodejs-blog-api",
+  "version": "1.0.0",
+  "description": "NodeJS Blog API.",
+  "scripts": {
+    "eslint": "node_modules/eslint/bin/eslint.js src",
+    "start": "NODE_PATH=. nodemon"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "awilix": "^2.2.3",
+    "awilix-express": "^0.11.0",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "http-status": "^1.0.1",
+    "lodash": "^4.17.4",
+    "log4js": "^1.1.1",
+    "log4js-json-layout": "^1.0.5",
+    "nconf": "^0.8.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "dotenv": "^4.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-loader": "^1.8.0",
+    "eslint-plugin-flow-vars": "^0.5.0",
+    "eslint-plugin-flowtype": "^2.34.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.1.0",
+    "morgan": "^1.8.1"
+  }
+}

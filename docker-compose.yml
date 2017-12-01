@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+
+  nodejs-blog-api:
+    build: .
+    volumes:
+      -  ./:/var/www/nodejs-blog-api
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+      - dev.env
+    networks:
+      - blog-api-local-network
+
+networks:
+  blog-api-local-network:
+    driver: bridge
+
