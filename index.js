@@ -1,10 +1,12 @@
 const container = require('src/container');
 
-const app = container.resolve('application');
-
-app
-  .start()
-  .catch((error) => {
-    app.logger.error(error.stack);
+const start = async () => {
+  try {
+    await (container.resolve('application')).start();
+  } catch (exception) {
+    (container.resolve('logger')).error(exception);
     process.exit();
-  });
+  }
+};
+
+start();

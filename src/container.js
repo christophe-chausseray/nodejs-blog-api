@@ -1,11 +1,11 @@
-const awilix = require('awilix');
+const { asValue, createContainer } = require('awilix');
 const Lifetime = require('awilix').Lifetime;
 const { scopePerRequest } = require('awilix-express');
 
 const config = require('src/core/infrastructure/utils/config');
 const errorHandler = require('src/core/infrastructure/http/errors/errorHandler');
 
-const container = awilix.createContainer();
+const container = createContainer();
 
 // Load our modules!
 container.loadModules([
@@ -20,10 +20,10 @@ container.loadModules([
 
 // Register constant values
 container
-  .registerValue({ config })
-  .registerValue({
-    containerMiddleware: scopePerRequest(container),
-    errorHandler,
+  .register({ config: asValue(config) })
+  .register({
+    containerMiddleware: asValue(scopePerRequest(container)),
+    errorHandler: asValue(errorHandler),
   });
 
 module.exports = container;

@@ -1,20 +1,21 @@
 class Application {
   /**
    * @param server
+   * @param mongoDb
    */
-  constructor({ server }) {
+  constructor({ server, mongoDb }) {
     this.server = server;
+    this.database = mongoDb;
   }
 
   /**
    * Start the app.
-   *
-   * @returns {Promise}
    */
-  start() {
-    return Promise.resolve()
-      .then(() => this.server.start());
+  async start() {
+    await this.database.start();
+    await this.server.start();
   }
+
 }
 
 module.exports = Application;
