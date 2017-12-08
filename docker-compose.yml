@@ -14,6 +14,36 @@ services:
     networks:
       - blog-api-local-network
 
+  blog-api-mongo:
+    build: ./docker/mongo/
+    ports:
+      - "27017:27017"
+    env_file:
+      - .env
+      - dev.env
+    volumes_from:
+      - blog-api-data
+    networks:
+      - blog-api-local-network
+
+  blog-api-data:
+    image: tianon/true
+    env_file:
+      - .env
+    volumes:
+      - /data/db
+
+  blog-api-mongoclient:
+    image: mongo-express:0.40
+    env_file:
+      - .env
+      - dev.env
+    networks:
+      - blog-api-local-network
+    ports:
+      - "8081:8081"
+    restart: on-failure
+
 networks:
   blog-api-local-network:
     driver: bridge
