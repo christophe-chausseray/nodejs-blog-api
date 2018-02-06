@@ -8,6 +8,7 @@ module.exports = ({
   loggerMiddleware,
   containerMiddleware,
   errorHandler,
+  articleRouter,
 }) => {
   const router = Router();
   const apiPrefix = '/api/v1';
@@ -18,6 +19,8 @@ module.exports = ({
     .use(containerMiddleware);
 
   router.use(loggerMiddleware);
+
+  router.use(articleRouter.handle());
 
   router.use(errorHandler);
 
