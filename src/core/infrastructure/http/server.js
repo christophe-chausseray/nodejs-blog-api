@@ -6,7 +6,11 @@ class Server {
    * @param config
    * @param logger
    */
-  constructor({ router, config, logger }) {
+  constructor({
+    router,
+    config,
+    logger,
+  }) {
     this.config = config;
     this.logger = logger;
     this.express = express();
@@ -23,7 +27,9 @@ class Server {
     return new Promise(resolve => {
       const http = this.express
         .listen(this.config.port, () => {
-          const { port } = http.address();
+          const {
+            port,
+          } = http.address();
           this.logger.info(`[p ${process.pid}] Listening at port ${port}`);
           resolve();
         });

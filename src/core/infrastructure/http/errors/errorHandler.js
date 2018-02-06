@@ -1,7 +1,9 @@
 const HttpStatus = require('http-status');
 
 module.exports = (err, req, res, next) => {
-  const { logger } = req.container.cradle;
+  const {
+    logger,
+  } = req.container.cradle;
 
   logger.error(err);
 

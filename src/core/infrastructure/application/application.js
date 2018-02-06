@@ -3,7 +3,10 @@ class Application {
    * @param server
    * @param mongoDb
    */
-  constructor({ server, mongoDb }) {
+  constructor({
+    server,
+    mongoDb,
+  }) {
     this.server = server;
     this.database = mongoDb;
   }

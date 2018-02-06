@@ -2,7 +2,10 @@ const Mongoose = require('mongoose');
 const InfrastructureException = require('src/core/infrastructure/exception/infrastructureException');
 
 class MongoDb {
-  constructor({ config, logger }) {
+  constructor({
+    config,
+    logger,
+  }) {
     this.config = config;
     this.logger = logger;
     Mongoose.Promise = global.Promise;

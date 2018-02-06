@@ -20,12 +20,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  articles: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'article',
-    },
-  ],
+  articles: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'article',
+  }],
 });
 UserSchema.plugin(timestamps);
 
