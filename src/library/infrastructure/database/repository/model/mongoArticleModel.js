@@ -4,6 +4,10 @@ const timestamps = require('mongoose-timestamp');
 class MongoArticleModel {
   constructor() {
     this.schema = new mongoose.Schema({
+      slug: {
+        type: String,
+        required: true,
+      },
       title: {
         type: String,
         required: true,

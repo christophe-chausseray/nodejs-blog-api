@@ -14,7 +14,7 @@ class MongoListArticleQuery {
    * @return {*}
    */
   async list() {
-    const data = await this.model().find({});
+    const data = await this.model().find();
 
     return data;
   }

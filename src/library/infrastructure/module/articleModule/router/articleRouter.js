@@ -1,10 +1,15 @@
 const Router = require('express');
 
 class articleRouter {
+  /**
+   * @param {ListArticleController} listArticleController
+   */
   constructor({
-        listArticleController,
+    listArticleController,
+    createArticleController,
   }) {
     this.listArticleController = listArticleController;
+    this.createArticleController = createArticleController;
   }
 
   /**
@@ -16,6 +21,7 @@ class articleRouter {
     const api = Router();
 
     api.get('/api/v1/articles', this.listArticleController.action);
+    api.put('/api/v1/articles/:slug', this.createArticleController.action);
 
     return api;
   }
