@@ -22,7 +22,6 @@ class CreateArticleController {
         req.body.body,
       ));
       
-      console.log('ready to send res', res.status(HttpStatus.CREATED));
       return res.status(HttpStatus.CREATED).end();
     } catch (exception) {
       this.logger.error(exception.message);
