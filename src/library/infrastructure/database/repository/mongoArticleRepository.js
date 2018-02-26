@@ -1,4 +1,4 @@
-const ArticleAlreadyExist = require('src/library/domain/exceptions/articleAlreadyExists');
+const ArticleAlreadyExist = require('src/library/domain/exceptions/articleAlreadyExist');
 
 class MongoArticleRepository {
   /**
@@ -30,6 +30,12 @@ class MongoArticleRepository {
     }
 
     return article;
+  }
+
+  async update(article, params) {
+    article.set(params);
+
+    await article.save();
   }
 
   /**

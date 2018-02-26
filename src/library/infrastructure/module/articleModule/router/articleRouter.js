@@ -22,6 +22,7 @@ class articleRouter {
 
     api.get('/api/v1/articles', this.listArticleController.action);
     api.put('/api/v1/articles/:slug', this.createArticleController.action);
+    api.patch('/api/v1/articles/:slug', this.editArticleController.action);
 
     return api;
   }

@@ -21,7 +21,7 @@ class CreateArticleController {
         req.body.description,
         req.body.body,
       ));
-      
+
       return res.status(HttpStatus.CREATED).end();
     } catch (exception) {
       this.logger.error(exception.message);
