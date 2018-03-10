@@ -7,9 +7,11 @@ class articleRouter {
   constructor({
     listArticleController,
     createArticleController,
+    editArticleController,
   }) {
     this.listArticleController = listArticleController;
     this.createArticleController = createArticleController;
+    this.editArticleController = editArticleController;
   }
 
   /**

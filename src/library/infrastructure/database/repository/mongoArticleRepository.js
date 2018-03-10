@@ -23,11 +23,24 @@ class MongoArticleRepository {
   async get(slug) {
     const article = this.model.findOne({
       slug,
-    });
+    }).exec();
+    console.log(article);
 
     if (article === null) {
       return null;
     }
+
+    return article;
+  }
+
+  async findOneAndUpdate(slug, params) {
+    const article = await this.model.findOneAndUpdate({
+        slug
+      },
+      params, {
+        new: true
+      },
+    );
 
     return article;
   }

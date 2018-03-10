@@ -1,5 +1,5 @@
 const HttpStatus = require('http-status');
-// const CreateArticle = require('src/library/application/useCase/command/editArticle');
+const EditArticle = require('src/library/application/useCase/command/editArticle');
 const errorHandler = require('src/core/infrastructure/http/errors/errorHandler');
 
 class EditArticleController {
@@ -15,9 +15,9 @@ class EditArticleController {
 
   async action(req, res) {
     try {
-      await this.handler.handle(req.params.slug, req.body);
+      const article = await this.handler.handle(new EditArticle(req.params.slug, req.body));
 
-      return res.status(HttpStatus.NO_CONTENT).end();
+      return res.status(HttpStatus.OK).send(article).end();
     } catch (exception) {
       this.logger.error(exception.message);
 
