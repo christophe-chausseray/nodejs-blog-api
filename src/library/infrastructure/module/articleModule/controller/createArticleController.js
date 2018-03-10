@@ -3,6 +3,10 @@ const CreateArticle = require('src/library/application/useCase/command/createArt
 const errorHandler = require('src/core/infrastructure/http/errors/errorHandler');
 
 class CreateArticleController {
+  /**
+   * @param {CreateArticleHandler} createArticleHandler
+   * @param {Logger} logger
+   */
   constructor({
     createArticleHandler,
     logger,
@@ -13,6 +17,12 @@ class CreateArticleController {
     this.action = this.action.bind(this);
   }
 
+  /**
+   * Create article action
+   *
+   * @param {*} req
+   * @param {*} res
+   */
   async action(req, res) {
     try {
       await this.handler.handle(new CreateArticle(
@@ -21,7 +31,7 @@ class CreateArticleController {
         req.body.description,
         req.body.body,
       ));
-      
+
       return res.status(HttpStatus.CREATED).end();
     } catch (exception) {
       this.logger.error(exception.message);
