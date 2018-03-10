@@ -10,6 +10,11 @@ class MongoArticleRepository {
     this.model = mongoArticleModel.create();
   }
 
+  /**
+   * Create the new article if it doesn't already exist.
+   *
+   * @param {*} article
+   */
   async create(article) {
     const articleExist = await this.get(article.slug);
 
@@ -20,35 +25,37 @@ class MongoArticleRepository {
     await this.model.create(article);
   }
 
+  /**
+   * Get the article from the slug.
+   *
+   * @param {*} slug
+   */
   async get(slug) {
-    const article = this.model.findOne({
+    const article = await this.model.findOne({
       slug,
-    }).exec();
-    console.log(article);
-
-    if (article === null) {
-      return null;
-    }
+    });
 
     return article;
   }
 
+  /**
+   * Find the article from the slug and update it with the new values.
+   *
+   * @param {*} slug
+   * @param {*} params
+   */
   async findOneAndUpdate(slug, params) {
-    const article = await this.model.findOneAndUpdate({
-        slug
+    const article = await this.model.findOneAndUpdate(
+      {
+        slug,
       },
-      params, {
-        new: true
+      params,
+      {
+        new: true,
       },
     );
 
     return article;
-  }
-
-  async update(article, params) {
-    article.set(params);
-
-    await article.save();
   }
 
   /**

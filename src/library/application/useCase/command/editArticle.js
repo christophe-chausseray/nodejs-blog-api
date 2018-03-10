@@ -1,4 +1,8 @@
 class EditArticle {
+  /**
+   * @param {srting} slug
+   * @param {*} params
+   */
   constructor(
     slug,
     params,

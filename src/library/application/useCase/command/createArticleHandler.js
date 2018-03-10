@@ -1,12 +1,20 @@
 const Article = require('src/library/domain/model/article');
 
 class CreateArticleHandler {
+  /**
+   * @param {MongoArticleRepository} mongoArticleRepository
+   */
   constructor({
     mongoArticleRepository,
   }) {
     this.mongoArticleRepository = mongoArticleRepository;
   }
 
+  /**
+   * Handle the article's creation
+   *
+   * @param {CreateArticle} createArticle
+   */
   async handle(createArticle) {
     await this.mongoArticleRepository.create(Article.create(
       createArticle.slug,

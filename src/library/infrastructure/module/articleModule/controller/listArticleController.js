@@ -4,6 +4,7 @@ const errorHandler = require('src/core/infrastructure/http/errors/errorHandler')
 class ListArticleController {
   /**
    * @param {ListArticleQuery} listArticleQuery
+   * @param {Logger} logger
    */
   constructor({
     listArticleQuery,

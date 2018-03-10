@@ -1,4 +1,10 @@
 class CreateArticle {
+  /**
+   * @param {string} slug
+   * @param {string} title
+   * @param {string} description
+   * @param {string} body
+   */
   constructor(
     slug,
     title,
