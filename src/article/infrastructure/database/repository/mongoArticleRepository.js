@@ -1,5 +1,5 @@
-const ArticleNotFound = require('src/library/domain/exceptions/articleNotFound');
-const ArticleAlreadyExist = require('src/library/domain/exceptions/articleAlreadyExist');
+const ArticleNotFound = require('src/article/domain/exceptions/articleNotFound');
+const ArticleAlreadyExist = require('src/article/domain/exceptions/articleAlreadyExist');
 
 class MongoArticleRepository {
   /**

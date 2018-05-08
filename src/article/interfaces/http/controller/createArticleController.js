@@ -1,6 +1,6 @@
 const HttpStatus = require('http-status');
-const CreateArticle = require('src/library/application/useCase/command/createArticle');
-const errorHandler = require('src/core/infrastructure/http/errors/errorHandler');
+const CreateArticle = require('src/article/application/useCase/command/createArticle');
+const errorHandler = require('src/core/interfaces/http/errors/errorHandler');
 
 class CreateArticleController {
   /**

@@ -1,4 +1,4 @@
-const Article = require('src/library/domain/model/article');
+const Article = require('src/article/domain/model/article');
 
 class EditArticleHandler {
   /**

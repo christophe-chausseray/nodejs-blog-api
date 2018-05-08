@@ -1,5 +1,5 @@
 const HttpStatus = require('http-status');
-const errorHandler = require('src/core/infrastructure/http/errors/errorHandler');
+const errorHandler = require('src/core/interfaces/http/errors/errorHandler');
 
 class ListArticleController {
   /**
