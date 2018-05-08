@@ -65,6 +65,13 @@ class MongoArticleRepository {
     return article;
   }
 
+  /**
+   * Find the article from the slug and remove it.
+   *
+   * @throws {ArticleNotFound} When the article wasn't found and can't be removed.
+   *
+   * @param {*} slug
+   */
   async findOneAndRemove(slug) {
     const article = await this.model.findOneAndRemove({ slug });
 

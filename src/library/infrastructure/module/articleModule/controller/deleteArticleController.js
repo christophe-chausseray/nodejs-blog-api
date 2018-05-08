@@ -18,7 +18,7 @@ class DeleteArticleController {
   }
 
   /**
-   * Create article action
+   * Delete article action
    *
    * @param {*} req
    * @param {*} res

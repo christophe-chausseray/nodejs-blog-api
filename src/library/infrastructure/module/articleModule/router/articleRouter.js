@@ -3,6 +3,9 @@ const Router = require('express');
 class articleRouter {
   /**
    * @param {ListArticleController} listArticleController
+   * @param {CreateArticleController} createArticleController
+   * @param {EditArticleController} editArticleController
+   * @param {DeleteArticleController} deleteArticleController
    */
   constructor({
     listArticleController,
