@@ -1,3 +1,4 @@
+const ArticleNotFound = require('src/library/domain/exceptions/articleNotFound');
 const ArticleAlreadyExist = require('src/library/domain/exceptions/articleAlreadyExist');
 
 class MongoArticleRepository {
@@ -41,6 +42,8 @@ class MongoArticleRepository {
   /**
    * Find the article from the slug and update it with the new values.
    *
+   * @throws {ArticleNotFound} When the article wasn't found and can't be updated.
+   *
    * @param {*} slug
    * @param {*} params
    */
@@ -54,6 +57,27 @@ class MongoArticleRepository {
         new: true,
       },
     );
+
+    if (article === null) {
+      throw ArticleNotFound.withSlug(slug);
+    }
+
+    return article;
+  }
+
+  /**
+   * Find the article from the slug and remove it.
+   *
+   * @throws {ArticleNotFound} When the article wasn't found and can't be removed.
+   *
+   * @param {*} slug
+   */
+  async findOneAndRemove(slug) {
+    const article = await this.model.findOneAndRemove({ slug });
+
+    if (article === null) {
+      throw ArticleNotFound.withSlug(slug);
+    }
 
     return article;
   }
