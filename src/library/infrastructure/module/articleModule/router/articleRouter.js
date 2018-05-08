@@ -8,10 +8,12 @@ class articleRouter {
     listArticleController,
     createArticleController,
     editArticleController,
+    deleteArticleController,
   }) {
     this.listArticleController = listArticleController;
     this.createArticleController = createArticleController;
     this.editArticleController = editArticleController;
+    this.deleteArticleController = deleteArticleController;
   }
 
   /**
@@ -25,6 +27,7 @@ class articleRouter {
     api.get('/api/v1/articles', this.listArticleController.action);
     api.put('/api/v1/articles/:slug', this.createArticleController.action);
     api.patch('/api/v1/articles/:slug', this.editArticleController.action);
+    api.delete('/api/v1/articles/:slug', this.deleteArticleController.action);
 
     return api;
   }
