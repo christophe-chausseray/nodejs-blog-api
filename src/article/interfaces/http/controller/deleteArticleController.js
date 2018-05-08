@@ -1,6 +1,6 @@
 const HttpStatus = require('http-status');
-const DeleteArticle = require('src/library/application/useCase/command/deleteArticle');
-const errorHandler = require('src/core/infrastructure/http/errors/errorHandler');
+const DeleteArticle = require('src/article/application/useCase/command/deleteArticle');
+const errorHandler = require('src/core/interfaces/http/errors/errorHandler');
 
 class DeleteArticleController {
   /**

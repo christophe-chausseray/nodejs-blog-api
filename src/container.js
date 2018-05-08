@@ -8,7 +8,7 @@ const {
 } = require('awilix-express');
 
 const config = require('src/core/infrastructure/utils/config');
-const errorHandler = require('src/core/infrastructure/http/errors/errorHandler');
+const errorHandler = require('src/core/interfaces/http/errors/errorHandler');
 
 const container = createContainer();
 
