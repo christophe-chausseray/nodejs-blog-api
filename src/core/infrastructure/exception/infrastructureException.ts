@@ -7,9 +7,9 @@ class InfrastructureException extends Error {
    *
    * @return {InfrastructureException}
    */
-  static causedBy(cause) {
+  public static causedBy(cause: string) {
     return new InfrastructureException(cause);
   }
 }
 
-module.exports = InfrastructureException;
+export default InfrastructureException;

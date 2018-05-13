@@ -1,9 +1,7 @@
-const HttpStatus = require('http-status');
+import HttpStatus from "http-status";
 
-module.exports = (err, req, res, next) => {
-  const {
-    logger,
-  } = req.container.cradle;
+export default (err: any, req: any, res: any, next: Function) => {
+  const logger: any = req.container.cradle;
 
   logger.error(err);
 
