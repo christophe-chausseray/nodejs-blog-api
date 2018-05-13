@@ -4,6 +4,7 @@ services:
 
   nodejs-blog-api:
     build: .
+    command: yarn run start:dev
     volumes:
       -  ./:/var/www/nodejs-blog-api
     ports:

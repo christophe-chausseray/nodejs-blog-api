@@ -12,4 +12,4 @@ RUN npm install -g --silent --progress=false nodemon
 
 COPY . $WORKDIR_APP
 
-CMD /bin/bash -c 'npm install; npm start'
+RUN yarn install
