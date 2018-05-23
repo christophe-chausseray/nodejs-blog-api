@@ -1,23 +1,19 @@
-const ArticleNotFound = require('src/article/domain/exceptions/articleNotFound');
-const ArticleAlreadyExist = require('src/article/domain/exceptions/articleAlreadyExist');
+import mongoArticleModel from "./model/mongoArticleModel";
+import ArticleNotFound from "../../../domain/exceptions/articleNotFound";
+import ArticleAlreadyExist from "../../../domain/exceptions/articleAlreadyExist";
 
 class MongoArticleRepository {
-  /**
-   * @param {MongoArticleModel} mongoArticleModel
-   */
-  constructor({
-    mongoArticleModel,
-  }) {
+  private model: any;
+
+  constructor(mongoArticleModel: mongoArticleModel) {
     this.model = mongoArticleModel.create();
   }
 
   /**
    * Create the new article if it doesn't already exist.
-   *
-   * @param {*} article
    */
-  async create(article) {
-    const articleExist = await this.get(article.slug);
+  public async create(article: any) {
+    const articleExist: any = await this.get(article.slug);
 
     if (articleExist !== null) {
       throw ArticleAlreadyExist.withSlug(articleExist.slug);
@@ -28,10 +24,8 @@ class MongoArticleRepository {
 
   /**
    * Get the article from the slug.
-   *
-   * @param {*} slug
    */
-  async get(slug) {
+  public async get(slug: string): Promise<{}> {
     const article = await this.model.findOne({
       slug,
     });
@@ -43,11 +37,8 @@ class MongoArticleRepository {
    * Find the article from the slug and update it with the new values.
    *
    * @throws {ArticleNotFound} When the article wasn't found and can't be updated.
-   *
-   * @param {*} slug
-   * @param {*} params
    */
-  async findOneAndUpdate(slug, params) {
+  public async findOneAndUpdate(slug: string, params: any): Promise<{}> {
     const article = await this.model.findOneAndUpdate(
       {
         slug,
@@ -72,7 +63,7 @@ class MongoArticleRepository {
    *
    * @param {*} slug
    */
-  async findOneAndRemove(slug) {
+  public async findOneAndRemove(slug: string): Promise<{}> {
     const article = await this.model.findOneAndRemove({ slug });
 
     if (article === null) {
@@ -84,12 +75,10 @@ class MongoArticleRepository {
 
   /**
    * Return the article model.
-   *
-   * return {Function}
    */
-  getModel() {
+  public getModel(): any {
     return this.model;
   }
 }
 
-module.exports = MongoArticleRepository;
+export default MongoArticleRepository;

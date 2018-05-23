@@ -1,7 +1,10 @@
-const mongoose = require('mongoose');
+import mongoose, { Model } from "mongoose";
+/** mongoose-timestamp needs to be imported with require (no ts declaration) */
 const timestamps = require('mongoose-timestamp');
 
 class MongoArticleModel {
+  private schema: mongoose.Schema;
+
   constructor() {
     this.schema = new mongoose.Schema({
       slug: {
@@ -30,12 +33,10 @@ class MongoArticleModel {
 
   /**
    * Create the mongoose article model.
-   *
-   * @return {Function}
    */
-  create() {
+  public create(): any {
     return mongoose.model('article', this.schema);
   }
 }
 
-module.exports = MongoArticleModel;
+export default MongoArticleModel;

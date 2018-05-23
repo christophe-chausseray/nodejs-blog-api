@@ -1,12 +1,12 @@
-const DomainException = require('src/core/domain/exception/domainException');
+import DomainException from "../../../core/domain/exception/domainException";
 
 class ArticleNotFound extends DomainException {
   /**
    * @param {string} slug
    */
-  static withSlug(slug) {
+  static withSlug(slug: string) {
     return new ArticleNotFound(`The article with the slug ${slug} doesn't exist.`);
   }
 }
 
-module.exports = ArticleNotFound;
+export default ArticleNotFound;

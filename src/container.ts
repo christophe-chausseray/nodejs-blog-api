@@ -7,7 +7,7 @@ import errorMiddleware from "./core/interfaces/http/errors/errorMiddleware";
 const container: AwilixContainer = createContainer({injectionMode: "CLASSIC"});
 
 // Load our modules!
-container.loadModules([["dist/core/**/*.js", Lifetime.SINGLETON]], {
+container.loadModules([["dist/**/*.js", Lifetime.SINGLETON]], {
   formatName: "camelCase",
 });
 

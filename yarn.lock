@@ -80,6 +80,10 @@
   version "22.2.3"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
 
+"@types/joi@^13.0.8":
+  version "13.0.8"
+  resolved "https://registry.yarnpkg.com/@types/joi/-/joi-13.0.8.tgz#224d5da224036f0c15b35e6980ba9de63b8ea374"
+
 "@types/lodash@^4.14.108":
   version "4.14.108"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.108.tgz#02656af3add2e5b3174f830862c47421c00ef817"

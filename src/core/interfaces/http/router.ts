@@ -3,12 +3,14 @@ import cors from "cors";
 import {Router} from "express";
 import * as core from "express-serve-static-core";
 import {Morgan} from "morgan";
+import articleRouter from "../../../article/interfaces/http/articleRouter";
 
 const router: (
   loggerMiddleware: () => void,
   containerMiddleware: () => void,
   errorMiddleware: () => void,
-) => core.Router = (loggerMiddleware, containerMiddleware, errorMiddleware) => {
+  articleRouter: articleRouter
+) => core.Router = (loggerMiddleware, containerMiddleware, errorMiddleware, articleRouter) => {
   const apiPrefix: string = "/api/v1";
   const router: core.Router = Router();
 
@@ -19,7 +21,7 @@ const router: (
 
   router.use(loggerMiddleware);
 
-  // router.use(articleRouter.handle());
+  router.use(articleRouter.handle());
 
   router.use(errorMiddleware);
 

@@ -1,8 +1,11 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
+/** mongoose-timestamp and mongoose-type-email need to be imported with require (no ts declaration) */
 const timestamps = require('mongoose-timestamp');
 require('mongoose-type-email');
 
 class MongoUserModel {
+  private schema: mongoose.Schema;
+
   constructor() {
     this.schema = new mongoose.Schema({
       username: {
@@ -32,12 +35,10 @@ class MongoUserModel {
 
   /**
    * Create the mongoose user model.
-   *
-   * @return {Function}
    */
-  create() {
+  create(): any {
     return mongoose.model('user', this.schema);
   }
 }
 
-module.exports = MongoUserModel;
+export default MongoUserModel;

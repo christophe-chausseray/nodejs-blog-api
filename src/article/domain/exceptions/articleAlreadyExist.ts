@@ -1,12 +1,12 @@
-const DomainException = require('src/core/domain/exception/domainException');
+import DomainException from "../../../core/domain/exception/domainException";
 
 class ArticleAlreadyExist extends DomainException {
   /**
    * @param {string} slug
    */
-  static withSlug(slug) {
+  public static withSlug(slug: string) {
     return new ArticleAlreadyExist(`An article already exists with the slug ${slug}.`);
   }
 }
 
-module.exports = ArticleAlreadyExist;
+export default ArticleAlreadyExist;

@@ -1,6 +1,6 @@
 import HttpStatus from "http-status";
 
-export default (err: any, req: any, res: any, next: Function) => {
+export default (err: any, req: any, res: any, next?: Function) => {
   const logger: any = req.container.cradle;
 
   logger.error(err);
