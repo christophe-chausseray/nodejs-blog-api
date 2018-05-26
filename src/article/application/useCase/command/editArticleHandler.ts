@@ -1,21 +1,21 @@
-import mongoArticleRepository from "../../../infrastructure/database/repository/mongoArticleRepository";
-import article from "../../../domain/model/article";
-import editArticle from "./editArticle";
+import Article from "../../../domain/model/article";
+import MongoArticleRepository from "../../../infrastructure/database/repository/mongoArticleRepository";
+import EditArticle from "./editArticle";
 
 class EditArticleHandler {
-  private repository: mongoArticleRepository;
+  private repository: MongoArticleRepository;
 
-  constructor(mongoArticleRepository: mongoArticleRepository) {
+  constructor(mongoArticleRepository: MongoArticleRepository) {
     this.repository = mongoArticleRepository;
   }
 
   /**
    * Handle the article's edition
    */
-  public async handle(editArticle: editArticle): Promise<article> {
+  public async handle(editArticle: EditArticle): Promise<Article> {
     const article: any = await this.repository.findOneAndUpdate(editArticle.slug, editArticle.params);
 
-    return article.create(article.slug, article.title, article.description, article.body);
+    return Article.create(article.slug, article.title, article.description, article.body);
   }
 }
 

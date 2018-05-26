@@ -1,12 +1,13 @@
+import { Request, Response } from "express";
 import HttpStatus from "http-status";
 import errorMiddleware from "../../../../core/interfaces/http/errors/errorMiddleware";
-import listArticleQuery from "../../../application/useCase/query/listArticleQuery";
+import ListArticleQuery from "../../../application/useCase/query/listArticleQuery";
 
 class ListArticleController {
-  private query: listArticleQuery;
+  private query: ListArticleQuery;
   private logger: any;
 
-  constructor(listArticleQuery: listArticleQuery, logger: any) {
+  constructor(listArticleQuery: ListArticleQuery, logger: any) {
     this.query = listArticleQuery;
     this.logger = logger;
 
@@ -16,7 +17,7 @@ class ListArticleController {
   /**
    * List article action
    */
-  public async action(req: any, res: any): Promise<{}> {
+  public async action(req: Request, res: Response): Promise<{}> {
     try {
       const articles = await this.query.list();
 

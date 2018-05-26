@@ -1,12 +1,14 @@
+import {Request, Response} from "express";
 import HttpStatus from "http-status";
 import errorMiddleware from "../../../../core/interfaces/http/errors/errorMiddleware";
-import createArticle from "../../../application/useCase/command/createArticle";
+import CreateArticle from "../../../application/useCase/command/createArticle";
+import CreateArticleHandler from "../../../application/useCase/command/createArticleHandler";
 
 class CreateArticleController {
-  private handler: any;
+  private handler: CreateArticleHandler;
   private logger: any;
 
-  constructor(createArticleHandler: any, logger: any) {
+  constructor(createArticleHandler: CreateArticleHandler, logger: any) {
     this.handler = createArticleHandler;
     this.logger = logger;
 
@@ -15,20 +17,14 @@ class CreateArticleController {
 
   /**
    * Create article action
-   *
-   * @param {*} req
-   * @param {*} res
    */
-  public async action(req: any, res: any): Promise<{}> {
+  public async action(req: Request, res: Response): Promise<{}> {
     try {
-      await this.handler.handle(new createArticle(
-        req.params.slug,
-        req.body.title,
-        req.body.description,
-        req.body.body,
-      ));
+      await this.handler.handle(
+        new CreateArticle(req.params.slug, req.body.title, req.body.description, req.body.body),
+      );
 
-      return res.status(HttpStatus.CREATED).end();
+      return res.status(HttpStatus.CREATED);
     } catch (exception) {
       this.logger.error(exception.message);
 

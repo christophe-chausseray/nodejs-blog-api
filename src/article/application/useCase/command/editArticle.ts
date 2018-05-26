@@ -1,11 +1,8 @@
 class EditArticle {
   public slug: string;
-  public params: any;
+  public params: {};
 
-  constructor(
-    slug: string,
-    params: any,
-  ) {
+  constructor(slug: string, params: {}) {
     this.slug = slug;
     this.params = params;
   }

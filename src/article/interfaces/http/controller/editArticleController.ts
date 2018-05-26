@@ -1,13 +1,14 @@
+import {Request, Response} from "express";
 import HttpStatus from "http-status";
 import errorMiddleware from "../../../../core/interfaces/http/errors/errorMiddleware";
-import editArticle from "../../../application/useCase/command/editArticle";
-import editArticleHandler from "../../../application/useCase/command/editArticleHandler";
+import EditArticle from "../../../application/useCase/command/editArticle";
+import EditArticleHandler from "../../../application/useCase/command/editArticleHandler";
 
 class EditArticleController {
-  private handler: editArticleHandler;
+  private handler: EditArticleHandler;
   private logger: any;
 
-  constructor(editArticleHandler: editArticleHandler, logger: any) {
+  constructor(editArticleHandler: EditArticleHandler, logger: any) {
     this.handler = editArticleHandler;
     this.logger = logger;
 
@@ -17,11 +18,11 @@ class EditArticleController {
   /**
    * Edit article action
    */
-  public async action(req: any, res: any): Promise<{}> {
+  public async action(req: Request, res: Response): Promise<{}> {
     try {
-      const article = await this.handler.handle(new editArticle(req.params.slug, req.body));
+      const article = await this.handler.handle(new EditArticle(req.params.slug, req.body));
 
-      return res.status(HttpStatus.OK).send(article).end();
+      return res.status(HttpStatus.OK).send(article);
     } catch (exception) {
       this.logger.error(exception.message);
 

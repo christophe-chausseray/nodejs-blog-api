@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 /** mongoose-timestamp and mongoose-type-email need to be imported with require (no ts declaration) */
-const timestamps = require('mongoose-timestamp');
-require('mongoose-type-email');
+const timestamps = require("mongoose-timestamp");
+require("mongoose-type-email");
 
 class MongoUserModel {
   private schema: mongoose.Schema;
@@ -25,10 +25,12 @@ class MongoUserModel {
         type: String,
         required: true,
       },
-      articles: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'article',
-      }],
+      articles: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "article",
+        },
+      ],
     });
     this.schema.plugin(timestamps);
   }
@@ -36,8 +38,8 @@ class MongoUserModel {
   /**
    * Create the mongoose user model.
    */
-  create(): any {
-    return mongoose.model('user', this.schema);
+  public create(): any {
+    return mongoose.model("user", this.schema);
   }
 }
 

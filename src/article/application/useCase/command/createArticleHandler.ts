@@ -1,25 +1,21 @@
-import mongoArticleRepository from "../../../infrastructure/database/repository/mongoArticleRepository";
-import createArticle from "./createArticle";
-import article from "../../../domain/model/article";
-
+import Article from "../../../domain/model/article";
+import MongoArticleRepository from "../../../infrastructure/database/repository/mongoArticleRepository";
+import CreateArticle from "./createArticle";
 
 class CreateArticleHandler {
-  private repository: mongoArticleRepository; 
+  private repository: MongoArticleRepository;
 
-  constructor(mongoArticleRepository: mongoArticleRepository) {
+  constructor(mongoArticleRepository: MongoArticleRepository) {
     this.repository = mongoArticleRepository;
   }
 
   /**
    * Handle the article's creation
    */
-  public async handle(createArticle: createArticle) {
-    await this.repository.create(article.create(
-      createArticle.slug,
-      createArticle.title,
-      createArticle.description,
-      createArticle.body,
-    ));
+  public async handle(createArticle: CreateArticle): Promise<void> {
+    await this.repository.create(
+      Article.create(createArticle.slug, createArticle.title, createArticle.description, createArticle.body),
+    );
   }
 }
 

@@ -3,13 +3,13 @@ import cors from "cors";
 import {Router} from "express";
 import * as core from "express-serve-static-core";
 import {Morgan} from "morgan";
-import articleRouter from "../../../article/interfaces/http/articleRouter";
+import ArticleRouter from "../../../article/interfaces/http/articleRouter";
 
 const router: (
   loggerMiddleware: () => void,
   containerMiddleware: () => void,
   errorMiddleware: () => void,
-  articleRouter: articleRouter
+  articleRouter: ArticleRouter,
 ) => core.Router = (loggerMiddleware, containerMiddleware, errorMiddleware, articleRouter) => {
   const apiPrefix: string = "/api/v1";
   const router: core.Router = Router();

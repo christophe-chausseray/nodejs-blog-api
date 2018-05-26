@@ -1,5 +1,5 @@
 import mongoArticleRepository from "../../../infrastructure/database/repository/mongoArticleRepository";
-import deleteArticle from "./deleteArticle";
+import DeleteArticle from "./deleteArticle";
 
 class DeleteArticleHandler {
   private repository: mongoArticleRepository;
@@ -11,7 +11,7 @@ class DeleteArticleHandler {
   /**
    * Handle the article's deletion
    */
-  public async handle(deleteArticle: deleteArticle) {
+  public async handle(deleteArticle: DeleteArticle): Promise<void> {
     await this.repository.findOneAndRemove(deleteArticle.slug);
   }
 }

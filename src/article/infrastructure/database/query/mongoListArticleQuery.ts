@@ -1,9 +1,9 @@
-import mongoArticleRepository from "../repository/mongoArticleRepository";
+import MongoArticleRepository from "../repository/mongoArticleRepository";
 
 class MongoListArticleQuery {
-  private repository: mongoArticleRepository;
+  private repository: MongoArticleRepository;
 
-  constructor(mongoArticleRepository: mongoArticleRepository) {
+  constructor(mongoArticleRepository: MongoArticleRepository) {
     this.repository = mongoArticleRepository;
   }
 

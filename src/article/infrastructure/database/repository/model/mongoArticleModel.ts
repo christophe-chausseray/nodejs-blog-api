@@ -1,6 +1,6 @@
-import mongoose, { Model } from "mongoose";
+import mongoose, {Model} from "mongoose";
 /** mongoose-timestamp needs to be imported with require (no ts declaration) */
-const timestamps = require('mongoose-timestamp');
+const timestamps = require("mongoose-timestamp");
 
 class MongoArticleModel {
   private schema: mongoose.Schema;
@@ -25,7 +25,7 @@ class MongoArticleModel {
       },
       author: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
+        ref: "user",
       },
     });
     this.schema.plugin(timestamps);
@@ -35,7 +35,7 @@ class MongoArticleModel {
    * Create the mongoose article model.
    */
   public create(): any {
-    return mongoose.model('article', this.schema);
+    return mongoose.model("article", this.schema);
   }
 }
 

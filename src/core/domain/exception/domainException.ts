@@ -2,9 +2,9 @@
  * Represent Error linked to domain action.
  */
 class DomainException implements Error {
-  name: any;
-  message: any;
-  
+  public name: string;
+  public message: string;
+
   protected constructor(message: string) {}
 }
 

@@ -1,18 +1,19 @@
-import mongoArticleModel from "./model/mongoArticleModel";
-import ArticleNotFound from "../../../domain/exceptions/articleNotFound";
 import ArticleAlreadyExist from "../../../domain/exceptions/articleAlreadyExist";
+import ArticleNotFound from "../../../domain/exceptions/articleNotFound";
+import Article from "../../../domain/model/article";
+import MongoArticleModel from "./model/mongoArticleModel";
 
 class MongoArticleRepository {
   private model: any;
 
-  constructor(mongoArticleModel: mongoArticleModel) {
+  constructor(mongoArticleModel: MongoArticleModel) {
     this.model = mongoArticleModel.create();
   }
 
   /**
    * Create the new article if it doesn't already exist.
    */
-  public async create(article: any) {
+  public async create(article: Article): Promise<void> {
     const articleExist: any = await this.get(article.slug);
 
     if (articleExist !== null) {
@@ -64,7 +65,7 @@ class MongoArticleRepository {
    * @param {*} slug
    */
   public async findOneAndRemove(slug: string): Promise<{}> {
-    const article = await this.model.findOneAndRemove({ slug });
+    const article = await this.model.findOneAndRemove({slug});
 
     if (article === null) {
       throw ArticleNotFound.withSlug(slug);

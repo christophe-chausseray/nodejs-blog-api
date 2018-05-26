@@ -1,16 +1,16 @@
-import mongoListArticleQuery from "../../../infrastructure/database/query/mongoListArticleQuery";
+import MongoListArticleQuery from "../../../infrastructure/database/query/mongoListArticleQuery";
 
 class ListArticleQuery {
-  private query: mongoListArticleQuery;
+  private query: MongoListArticleQuery;
 
-  constructor(mongoListArticleQuery: mongoListArticleQuery) {
+  constructor(mongoListArticleQuery: MongoListArticleQuery) {
     this.query = mongoListArticleQuery;
   }
 
   /**
    * List all articles
    */
-  list(): Promise<{}> {
+  public list(): Promise<{}> {
     return this.query.list();
   }
 }
