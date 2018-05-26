@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import HttpStatus from "http-status";
-import errorMiddleware from "../../../../core/interfaces/http/errors/errorMiddleware";
+import errorMiddleware from "../../../../core/infrastructure/http/errors/errorMiddleware";
 import ListArticleQuery from "../../../application/useCase/query/listArticleQuery";
 
-class ListArticleController {
+class ListArticle {
   private query: ListArticleQuery;
   private logger: any;
 

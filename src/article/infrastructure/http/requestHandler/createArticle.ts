@@ -1,10 +1,10 @@
 import {Request, Response} from "express";
 import HttpStatus from "http-status";
-import errorMiddleware from "../../../../core/interfaces/http/errors/errorMiddleware";
+import errorMiddleware from "../../../../core/infrastructure/http/errors/errorMiddleware";
 import CreateArticle from "../../../application/useCase/command/createArticle";
 import CreateArticleHandler from "../../../application/useCase/command/createArticleHandler";
 
-class CreateArticleController {
+class CreateArticle {
   private handler: CreateArticleHandler;
   private logger: any;
 

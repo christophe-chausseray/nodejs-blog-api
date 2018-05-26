@@ -1,10 +1,10 @@
 import {Request, Response} from "express";
 import HttpStatus from "http-status";
-import errorMiddleware from "../../../../core/interfaces/http/errors/errorMiddleware";
+import errorMiddleware from "../../../../core/infrastructure/http/errors/errorMiddleware";
 import DeleteArticle from "../../../application/useCase/command/deleteArticle";
 import DeleteArticleHandler from "../../../application/useCase/command/deleteArticleHandler";
 
-class DeleteArticleController {
+class DeleteArticle {
   private handler: DeleteArticleHandler;
   private logger: any;
 

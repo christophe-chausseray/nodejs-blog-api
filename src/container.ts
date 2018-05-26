@@ -2,7 +2,7 @@ import {asValue, AwilixContainer, createContainer, Lifetime} from "awilix";
 import {scopePerRequest} from "awilix-express";
 
 import {config} from "./core/infrastructure/utils/config";
-import errorMiddleware from "./core/interfaces/http/errors/errorMiddleware";
+import errorMiddleware from "./core/infrastructure/http/errors/errorMiddleware";
 
 const container: AwilixContainer = createContainer({injectionMode: "CLASSIC"});
 
