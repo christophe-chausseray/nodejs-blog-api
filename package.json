@@ -17,7 +17,7 @@
     "awilix-express": "^1.0.0",
     "body-parser": "^1.17.2",
     "cors": "^2.8.3",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "http-status": "^1.0.1",
     "joi": "^13.1.2",
     "lodash": "^4.17.4",
